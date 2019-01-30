@@ -7,7 +7,7 @@ class Petlist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pet: [],
+      lists: [],
       pseudo: '',
       breed: '',
     }
@@ -20,8 +20,18 @@ class Petlist extends Component {
     });
   }
 
+  componentDidMount() {
+    fetch(`https://api.yummypets.com/pets/`)
+      .then(results => results.json())
+      .then(data => {
+        this.setState({
+          lists: data.collection,
+        });
+      });
+  }
 
   render() {
+    const listsfilter = this.state.lists.slice(1,11)
     return (
       <div>
         <Container className="form-container">
@@ -56,6 +66,22 @@ class Petlist extends Component {
             </Col>
             <Col lg="2">
               <Button>ADD PET</Button>
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+          <Row>
+            <Col lg="12">
+                <ol>
+                {listsfilter.map(list => (
+                  <li>
+                    <img src={list.resource.avatar.thumb} alt="thumb" width="30px" />
+                    {list.resource.pseudo}
+                    {list.resource.breed.lib}
+                    <button>Delete</button>
+                  </li>
+              ))}
+               </ol>
             </Col>
           </Row>
         </Container>
