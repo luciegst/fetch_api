@@ -51,7 +51,4 @@ color: #c86a6a;
 cursor: pointer;
 border: none;
 background-color: transparent;
-display:flex;
-justify-content:flex-end;
-align-items:center; 
 }
