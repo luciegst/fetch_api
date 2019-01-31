@@ -1,3 +1,57 @@
 .form-container {
-  margin-top: 15em;
+  margin-top: 5em;
+}
+
+.row-pet-list {
+  justify-content: center;
+}
+.list-container{
+list-style-position: inside;
+padding: 0;
+}
+
+.thumb {
+  margin-left: 2em;
+  margin-right: 2em;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.list-of-pets {
+background-color: #EFEEED;
+margin-bottom: 5px;
+text-align: left;
+font-family: Arial, Helvetica, sans-serif;
+padding-left: 1em;
+border-radius: 20px;
+}
+
+.list-of-pets:first-child {
+  background-color: #A8B32C;
+}
+
+.list-of-pets:nth-child(2) {
+  background-color: rgba(168, 179, 44, 0.25)
+}
+
+.list-of-pets:nth-child(3){
+  background-color: rgba(168, 179, 44, 0.1);
+}
+
+.pseudo {
+  font-weight: bold;
+}
+.breed {
+  font-style: italic;
+}
+
+.button-list {
+color: #c86a6a;
+cursor: pointer;
+border: none;
+background-color: transparent;
+display:flex;
+justify-content:flex-end;
+align-items:center; 
 }

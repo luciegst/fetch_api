@@ -13,16 +13,18 @@ class Petlist extends Component {
       breed: '',
     }
     this.changeInput = this.changeInput.bind(this);
-     this.addPet = this.addPet.bind(this);
-     this.deletePet = this.deletePet.bind(this);
+    this.addPet = this.addPet.bind(this);
+    this.deletePet = this.deletePet.bind(this);
   }
 
+  //change form input//
   changeInput(e) {
     this.setState({
       [e.target.name]: e.target.value,
     });
   }
 
+  //fetch api//
   componentDidMount() {
     fetch(`https://api.yummypets.com/pets/`)
       .then(results => results.json())
@@ -33,13 +35,15 @@ class Petlist extends Component {
       });
   }
 
-  deletePet(id){
-    const newlist = this.state.lists.filter(item=> item.resource.id !== id)
+  //delete an element of the list//
+  deletePet(id) {
+    const newlist = this.state.lists.filter(item => item.resource.id !== id)
     this.setState({
       lists: newlist
     })
   }
 
+  //add an element on the list//
   addPet() {
     this.setState({
       id: this.state.id + 1
@@ -61,64 +65,67 @@ class Petlist extends Component {
     })
   };
 
-render() {
-  const listsfilter = this.state.lists.slice(-10)
-  return (
-    <div>
-      <Container className="form-container">
-        <Row>
-          <Col lg="4">
-            <Form>
+  render() {
+
+    //limit the list of 10 items//
+    const listsfilter = this.state.lists.slice(-10)
+    return (
+      <div>
+        <Container className="form-container">
+          <Row className="row-pet-list">
+            <Col lg="4">
+              <Form>
+                <FormGroup>
+                  <Input
+                    type="text"
+                    name="pseudo"
+                    id="examplepseudo"
+                    value={this.state.pseudo}
+                    onChange={this.changeInput}
+                    placeholder="Pseudo"
+                    required
+                  />
+                </FormGroup>
+              </Form>
+            </Col>
+            <Col lg="4">
               <FormGroup>
                 <Input
                   type="text"
-                  name="pseudo"
-                  id="examplepseudo"
-                  value={this.state.pseudo}
+                  name="breed"
+                  id="examplebreed"
+                  value={this.state.breed}
                   onChange={this.changeInput}
-                  placeholder="Pseudo"
+                  placeholder="Breed"
                   required
                 />
               </FormGroup>
-            </Form>
-          </Col>
-          <Col lg="4">
-            <FormGroup>
-              <Input
-                type="text"
-                name="breed"
-                id="examplebreed"
-                value={this.state.breed}
-                onChange={this.changeInput}
-                placeholder="Breed"
-                required
-              />
-            </FormGroup>
-          </Col>
-          <Col lg="2">
-            <Button onClick={this.addPet}>ADD PET</Button>
-          </Col>
-        </Row>
-      </Container>
-      <Container>
-        <Row>
-          <Col lg="12">
-            <ol>
-              {listsfilter.map(list => (
-                <li key={list.resource.id}>
-                  <img src={list.resource.avatar.thumb} alt="thumb" width="30px" />
-                  {list.resource.pseudo}
-                  {list.resource.breed.lib}
-                  <button onClick={() => this.deletePet(list.resource.id)}>Delete</button>
-                </li>
-              ))}
-            </ol>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  );
-}
+            </Col>
+            <Col lg="2">
+              <Button onClick={this.addPet}>ADD PET</Button>
+            </Col>
+          </Row>
+        </Container>
+        <br />
+        <Container>
+          <Row>
+            <Col>
+              <ol className="list-container">
+                {listsfilter.map(list => (
+                  <li key={list.resource.id} className="list-of-pets">
+                    <img src={list.resource.avatar.thumb} alt="thumb" width="40px" className="thumb" />
+                    <span className="pseudo mr-3">{list.resource.pseudo}</span>
+                    <span className="breed">{list.resource.breed.lib}</span>
+                    <button className="button-list " onClick={() => this.deletePet(list.resource.id)}>Delete</button>
+                  </li>
+                ))}
+              </ol>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    );
+  }
 }
 
 export default Petlist;
