@@ -58,4 +58,39 @@ color: #c86a6a;
 cursor: pointer;
 border: none;
 background-color: transparent;
+position: absolute;
+right: 15px;
+margin-top: 11px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 736px) and (orientation: portrait) {
+  .thumb {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  .button-list {
+    right: 15px;
+    margin-top: 9px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 736px) and (orientation: landscape) {
+  .button-list {
+    right: 15px;
+    margin-top: 9px;
+  }
+}
+
+@media screen and (min-width: 736px) and (max-width: 1024px) and (orientation:portrait) {
+  .button-list {
+    right: 15px;
+    margin-top: 9px;
+  }
+}
+
+@media screen and (min-width: 736px) and (max-width: 1024px) and (orientation:landscape) {
+  .button-list {
+    right: 15px;
+    margin-top: 9px;
+  }
 }
