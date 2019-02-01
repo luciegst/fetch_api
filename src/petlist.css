@@ -5,6 +5,13 @@
 .row-pet-list {
   justify-content: center;
 }
+
+.button-add.btn.btn-secondary{
+  background-color: #A8B32C;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+}
 .list-container{
 list-style-position: inside;
 padding: 0;

@@ -102,7 +102,7 @@ class Petlist extends Component {
               </FormGroup>
             </Col>
             <Col lg="2">
-              <Button onClick={this.addPet}>ADD PET</Button>
+              <Button className="button-add"onClick={this.addPet}>ADD PET</Button>
             </Col>
           </Row>
         </Container>
