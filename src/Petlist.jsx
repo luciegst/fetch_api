@@ -68,7 +68,8 @@ class Petlist extends Component {
   render() {
 
     //limit the list of 10 items//
-    const listsfilter = this.state.lists.slice(-10)
+    //sort pseudos alphabetically from A to Z//
+    const listsfilter = this.state.lists.slice(-10).sort((a,b) => a.resource.pseudo.localeCompare(b.resource.pseudo))
     return (
       <div>
         <Container className="form-container">
